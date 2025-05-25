@@ -12,6 +12,15 @@ const HolidayPackages = () => {
       country: "Dubai",
       title: "Unforgettable 6-Day Dubai + Abu Dhabi Experience",
       description: "Experience 6 days of pure excitement in Dubai and Abu Dhabi! From your warm airport welcome to thrilling city tours, dazzling Dhow Cruise dinners, and heart-pounding desert safaris — every moment is unforgettable. Marvel at the Burj Khalifa, explore the Grand Mosque, ride camels, and soak in luxury and adventure. The perfect blend of culture, fun, and breathtaking views — all in one incredible getaway!",
+      price: "₹11,000",
+      duration: "3 Nights / 4 Days | Min. 4 Pax",
+      includes: [
+        "4-Star Hotel Stay",
+        "English Speaking Guide", 
+        "All Entry Tickets",
+        "Meals & Transfers Included"
+      ],
+      tagline: "Explore the luxury of Dubai at an unbeatable price!",
       colors: "from-blue-500 to-yellow-500",
       bgColor: "bg-gradient-to-br from-blue-50 to-yellow-50"
     },
@@ -20,6 +29,16 @@ const HolidayPackages = () => {
       country: "Georgia",
       title: "Discover Georgia in 5 Days of Magic",
       description: "Begin your journey in charming Tbilisi with cobblestone streets, ancient churches, and panoramic views from Mtatsminda Park. Wander through Mtskheta, then head to the mountains of Kazbegi and Gudauri for breathtaking views. Sip wine in Kakheti, stroll through Sighnaghi, and soak in Georgia's culture, beauty, and heritage.",
+      price: "₹17,699",
+      duration: "3 Nights / 4 Days | Min. 4 Pax",
+      includes: [
+        "4-Star Stay + Daily Meals",
+        "Private Transfers + All Entry Tickets",
+        "Cable Car & 4x4 Mountain Rides",
+        "English-speaking Guide"
+      ],
+      destinations: "Tbilisi, Mtskheta, Gudauri, Kazbegi",
+      tagline: "Discover the scenic beauty of Georgia!",
       colors: "from-red-600 to-yellow-100",
       bgColor: "bg-gradient-to-br from-red-50 to-yellow-50"
     },
@@ -59,6 +78,16 @@ const HolidayPackages = () => {
                       <h2 className={`text-4xl font-bold bg-gradient-to-r ${pkg.colors} bg-clip-text text-transparent`}>
                         {pkg.country}
                       </h2>
+                      
+                      {pkg.price && (
+                        <div className="mt-6 p-4 bg-white/70 rounded-xl">
+                          <div className={`text-2xl font-bold bg-gradient-to-r ${pkg.colors} bg-clip-text text-transparent`}>
+                            {pkg.price}
+                          </div>
+                          <div className="text-sm text-gray-600">per person</div>
+                          <div className="text-xs text-gray-500 mt-1">{pkg.duration}</div>
+                        </div>
+                      )}
                     </div>
                     
                     <div className="flex-1">
@@ -66,9 +95,38 @@ const HolidayPackages = () => {
                         {pkg.title}
                       </h3>
                       
-                      <p className="text-gray-600 mb-8 leading-relaxed text-lg">
+                      <p className="text-gray-600 mb-6 leading-relaxed text-lg">
                         {pkg.description}
                       </p>
+
+                      {pkg.includes && (
+                        <div className="mb-6 p-4 bg-white/50 rounded-xl">
+                          <div className="font-semibold mb-3 text-gray-800">Package Includes:</div>
+                          <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-700">
+                            {pkg.includes.map((item, idx) => (
+                              <li key={idx} className="flex items-start">
+                                <span className="text-green-500 mr-2">✓</span>
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                          
+                          {pkg.destinations && (
+                            <div className="mt-4 pt-3 border-t border-gray-200">
+                              <div className="font-semibold text-gray-800">Destinations:</div>
+                              <div className="text-gray-600 text-sm">{pkg.destinations}</div>
+                            </div>
+                          )}
+                          
+                          {pkg.tagline && (
+                            <div className="mt-4 text-center">
+                              <em className={`bg-gradient-to-r ${pkg.colors} bg-clip-text text-transparent font-medium`}>
+                                {pkg.tagline}
+                              </em>
+                            </div>
+                          )}
+                        </div>
+                      )}
                       
                       <Button 
                         size="lg"

@@ -20,11 +20,11 @@ const Hero = () => {
           and yes—even travel insurance. You're in safe hands. Let the journey begin.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <Button 
             asChild 
             size="lg" 
-            className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-6 rounded-xl"
+            className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <Link to="/visa-services">
               Start Your Journey
@@ -36,10 +36,11 @@ const Hero = () => {
             asChild 
             variant="outline" 
             size="lg" 
-            className="text-lg px-8 py-6 rounded-xl border-2 hover:bg-gray-50"
+            className="text-lg px-8 py-6 rounded-xl border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             <Link to="/holiday-packages">
               Explore Packages
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
         </div>
