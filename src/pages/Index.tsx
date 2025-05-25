@@ -1,25 +1,22 @@
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Shield, MapPin, FileText, Users, Clock, CheckCircle } from "lucide-react";
-import { Link } from "react-router-dom";
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
+import ParallaxHero from "@/components/ParallaxHero";
 import ServiceCards from "@/components/ServiceCards";
 import USVisaSection from "@/components/USVisaSection";
 import HolidayPackagesPreview from "@/components/HolidayPackagesPreview";
 import Footer from "@/components/Footer";
+import FloatingActionButton from "@/components/FloatingActionButton";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
       <Header />
-      <Hero />
+      <ParallaxHero />
       <ServiceCards />
       <USVisaSection />
       <HolidayPackagesPreview />
       <Footer />
+      <FloatingActionButton />
     </div>
   );
 };
