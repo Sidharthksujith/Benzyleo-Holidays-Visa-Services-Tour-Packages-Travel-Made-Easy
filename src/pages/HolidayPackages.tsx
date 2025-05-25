@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -47,6 +46,15 @@ const HolidayPackages = () => {
       country: "Thailand", 
       title: "A Thai Adventure to Remember",
       description: "Dive into the best of Thailand with a journey full of wonder! Enjoy private transfers, the Alcazar Show, the Floating Market, and Underwater World. Visit Noong Nooch Village, Safari World, Marine Park, and end with a magical dinner cruise in Bangkok. An unforgettable mix of thrill and culture.",
+      price: "₹9,999",
+      duration: "3 Nights / 4 Days | Pattaya | Min. 2 Pax",
+      includes: [
+        "3-Star Hotel Stay",
+        "Alcazar Show",
+        "Coral Island Tour with Speedboat & Lunch",
+        "Private Transfers Included"
+      ],
+      tagline: "Experience the vibrant charm of Pattaya with unbeatable value!",
       colors: "from-purple-500 to-blue-400",
       bgColor: "bg-gradient-to-br from-purple-50 to-blue-50"
     }

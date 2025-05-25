@@ -66,7 +66,7 @@ const ParallaxHero = () => {
             and yes—even travel insurance. You're in safe hands. Let the journey begin.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Button 
               asChild 
               size="lg" 
@@ -82,10 +82,11 @@ const ParallaxHero = () => {
               asChild 
               variant="outline" 
               size="lg" 
-              className="text-lg px-8 py-6 rounded-xl border-2 border-white text-white hover:bg-white hover:text-blue-600 transition-all duration-300"
+              className="text-lg px-8 py-6 rounded-xl border-2 border-white text-white hover:bg-white hover:text-blue-600 transition-all duration-300 shadow-lg hover:shadow-xl bg-white/10 backdrop-blur-sm"
             >
               <Link to="/holiday-packages">
                 Explore Packages
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
           </div>
