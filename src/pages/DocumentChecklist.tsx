@@ -1,3 +1,4 @@
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -23,7 +24,7 @@ const DocumentChecklist = () => {
       icon: "💼",
       title: "Employment & Finance Docs",
       items: [
-        "Employed – Salary slips, letter from employer",
+        "Employed – Salary slips, letter from employer (📥 Download Template)",
         "Self-Employed – Business license, tax records",
         "Investments – Property, shares (optional)"
       ]
@@ -42,35 +43,45 @@ const DocumentChecklist = () => {
       title: "If Trip is Sponsored",
       items: [
         "Sponsor's Bank Statement",
-        "Sponsor Letter 📥 Download Template"
+        "Sponsor Letter (📥 Download Template)"
       ]
     },
     {
       icon: "🏠",
       title: "If Invited by Family/Friends in US",
       items: [
-        "Invitation Letter with host's details 📥 Download Template"
+        "Invitation Letter with host's details (📥 Download Template)"
       ]
     },
     {
       icon: "🏢",
       title: "If Invited by a US Company",
       items: [
-        "Company Letterhead invitation 📥 Download Template"
+        "Company Letterhead invitation (📥 Download Template)"
       ]
     },
     {
       icon: "🧳",
       title: "Business Travelers",
       items: [
-        "Company Cover Letter 📥 Download Template"
+        "Company Cover Letter (📥 Download Template)"
       ]
     }
   ];
 
   const handleTemplateDownload = (templateType: string) => {
-    if (templateType === "Cover Letter") {
-      window.open("https://docs.google.com/document/d/1XW_aXCyu11lp7toyJbYAmIRcuojvkaD5ID_zKCra3v0/edit?tab=t.0#heading=h.erczin1w2702", "_blank");
+    const templateLinks = {
+      "Cover Letter": "https://docs.google.com/document/d/1XW_aXCyu11lp7toyJbYAmIRcuojvkaD5ID_zKCra3v0/edit?tab=t.0#heading=h.erczin1w2702",
+      "Employed – Salary slips, letter from employer": "https://docs.google.com/document/d/1SCAid21dFi2iEtna0_10glcC04s3XBIR3URQBrNcKlg/edit?tab=t.0#heading=h.gjdgxs",
+      "Sponsor Letter": "https://docs.google.com/document/d/1CME4h_M7l6ihSY4S5VGZkS9PpRnwNbQxDqF2ca9JByM/edit?tab=t.0",
+      "Invitation Letter with host's details": "https://docs.google.com/document/d/1AjCp-DTl1zYdpp0sl4A0rcANvebzkQRXZrYTiDDRSIc/edit?tab=t.0",
+      "Company Letterhead invitation": "https://docs.google.com/document/d/1eZkV6ydLy6Xu6enwur6QkHDJmvTQbyT7ya8-ckLfmTA/edit?tab=t.0",
+      "Company Cover Letter": "https://docs.google.com/document/d/1o-ppnigTNSvcYUkLF2jPm4yimoSzr2o3RmunsAl1EoU/edit?tab=t.0#heading=h.gjdgxs"
+    };
+
+    const link = templateLinks[templateType as keyof typeof templateLinks];
+    if (link) {
+      window.open(link, "_blank");
     }
   };
 
@@ -109,7 +120,7 @@ const DocumentChecklist = () => {
                         <span className="text-gray-700">
                           {item.includes("📥 Download Template") ? (
                             <span className="flex items-center justify-between w-full">
-                              <span>{item.replace(" 📥 Download Template", "")}</span>
+                              <span>{item.replace(" (📥 Download Template)", "")}</span>
                               <Button 
                                 variant="outline" 
                                 size="sm" 
