@@ -2,7 +2,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Clock } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const USVisaSection = () => {
   const visaTimelines = [
@@ -18,6 +17,12 @@ const USVisaSection = () => {
     "Early dates for all visa types",
     "Expedited processing"
   ];
+
+  const handleBookUSVisa = () => {
+    const message = "Hi! I'm interested in booking a US visa appointment. Can you help me with the process?";
+    const whatsappUrl = `https://wa.me/917356427120?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+  };
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-indigo-100">
@@ -74,13 +79,11 @@ const USVisaSection = () => {
             </div>
 
             <Button 
-              asChild 
+              onClick={handleBookUSVisa}
               size="lg" 
               className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-lg py-6 rounded-xl shadow-lg"
             >
-              <Link to="/contact">
-                Book Your US Visa Now
-              </Link>
+              Book Your US Visa Now
             </Button>
           </div>
         </div>

@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
@@ -58,6 +59,12 @@ const HolidayPackagesPreview = () => {
       bgColor: "bg-gradient-to-br from-purple-50 to-blue-50"
     }
   ];
+
+  const handleBookNow = (country: string) => {
+    const message = `Hi! I'm interested in booking the ${country} package. Can you provide more details?`;
+    const whatsappUrl = `https://wa.me/917356427120?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+  };
 
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
@@ -127,13 +134,11 @@ const HolidayPackagesPreview = () => {
                 )}
                 
                 <Button 
-                  asChild 
+                  onClick={() => handleBookNow(pkg.country)}
                   className={`w-full bg-gradient-to-r ${pkg.colors} hover:opacity-90 text-white border-0 rounded-xl py-3`}
                 >
-                  <Link to="/holiday-packages">
-                    Book {pkg.country} Now
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
+                  Book {pkg.country} Now
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </CardContent>
             </Card>

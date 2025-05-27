@@ -63,6 +63,12 @@ const VisaServices = () => {
     }
   ];
 
+  const handleGetVisaAppointment = () => {
+    const message = "Hi! I'm interested in getting a visa appointment. Can you help me with the process?";
+    const whatsappUrl = `https://wa.me/917356427120?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <Header />
@@ -102,7 +108,11 @@ const VisaServices = () => {
           </div>
 
           <div className="text-center">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-lg rounded-xl">
+            <Button 
+              onClick={handleGetVisaAppointment}
+              size="lg" 
+              className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-lg rounded-xl"
+            >
               Get Your Visa Appointment
             </Button>
           </div>
