@@ -1,4 +1,3 @@
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -69,6 +68,12 @@ const DocumentChecklist = () => {
     }
   ];
 
+  const handleTemplateDownload = (templateType: string) => {
+    if (templateType === "Cover Letter") {
+      window.open("https://docs.google.com/document/d/1XW_aXCyu11lp7toyJbYAmIRcuojvkaD5ID_zKCra3v0/edit?tab=t.0#heading=h.erczin1w2702", "_blank");
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <Header />
@@ -105,7 +110,12 @@ const DocumentChecklist = () => {
                           {item.includes("📥 Download Template") ? (
                             <span className="flex items-center justify-between w-full">
                               <span>{item.replace(" 📥 Download Template", "")}</span>
-                              <Button variant="outline" size="sm" className="ml-2">
+                              <Button 
+                                variant="outline" 
+                                size="sm" 
+                                className="ml-2"
+                                onClick={() => handleTemplateDownload(item.replace(" (📥 Download Template)", ""))}
+                              >
                                 <Download className="h-4 w-4 mr-1" />
                                 Template
                               </Button>
