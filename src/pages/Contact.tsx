@@ -1,4 +1,5 @@
 
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -6,8 +7,110 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, MessageCircle, Instagram } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const validateForm = () => {
+    const { firstName, email, phone, message } = formData;
+    if (!firstName.trim()) {
+      toast({
+        title: "Error",
+        description: "First name is required",
+        variant: "destructive"
+      });
+      return false;
+    }
+    if (!email.trim() || !email.includes("@")) {
+      toast({
+        title: "Error",
+        description: "Please enter a valid email address",
+        variant: "destructive"
+      });
+      return false;
+    }
+    if (!phone.trim()) {
+      toast({
+        title: "Error",
+        description: "Phone number is required",
+        variant: "destructive"
+      });
+      return false;
+    }
+    if (!message.trim()) {
+      toast({
+        title: "Error",
+        description: "Message is required",
+        variant: "destructive"
+      });
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) return;
+    
+    setIsSubmitting(true);
+    
+    // Create WhatsApp message with form data
+    const fullName = `${formData.firstName} ${formData.lastName}`.trim();
+    const whatsappMessage = `Hi! I'm ${fullName} and I'd like to get in touch with you.
+
+📧 Email: ${formData.email}
+📱 Phone: ${formData.phone}
+${formData.service ? `🎯 Service Interested In: ${formData.service}` : ''}
+
+💬 Message:
+${formData.message}
+
+Please get back to me at your earliest convenience. Thank you!`;
+
+    const whatsappUrl = `https://wa.me/917356427120?text=${encodeURIComponent(whatsappMessage)}`;
+    
+    // Show success message
+    toast({
+      title: "Redirecting to WhatsApp",
+      description: "Your message is being prepared. You'll be redirected to WhatsApp shortly.",
+    });
+    
+    // Redirect after a short delay
+    setTimeout(() => {
+      window.open(whatsappUrl, "_blank");
+      setIsSubmitting(false);
+      
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: ""
+      });
+    }, 1000);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <Header />
@@ -114,51 +217,89 @@ const Contact = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <form className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        First Name
+                        First Name *
                       </label>
-                      <Input className="rounded-xl" placeholder="John" />
+                      <Input 
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        className="rounded-xl" 
+                        placeholder="John"
+                        required
+                      />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
                         Last Name
                       </label>
-                      <Input className="rounded-xl" placeholder="Doe" />
+                      <Input 
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        className="rounded-xl" 
+                        placeholder="Doe" 
+                      />
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email
+                      Email *
                     </label>
-                    <Input className="rounded-xl" type="email" placeholder="john@example.com" />
+                    <Input 
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="rounded-xl" 
+                      type="email" 
+                      placeholder="john@example.com"
+                      required
+                    />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone
+                      Phone *
                     </label>
-                    <Input className="rounded-xl" placeholder="+91 12345 67890" />
+                    <Input 
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="rounded-xl" 
+                      placeholder="+91 12345 67890"
+                      required
+                    />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Service Interested In
                     </label>
-                    <Input className="rounded-xl" placeholder="US Visa, Holiday Package, etc." />
+                    <Input 
+                      name="service"
+                      value={formData.service}
+                      onChange={handleInputChange}
+                      className="rounded-xl" 
+                      placeholder="US Visa, Holiday Package, etc." 
+                    />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Message
+                      Message *
                     </label>
                     <Textarea 
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
                       className="rounded-xl" 
                       rows={4}
                       placeholder="Tell us about your travel plans..."
+                      required
                     />
                   </div>
 
@@ -166,8 +307,9 @@ const Contact = () => {
                     type="submit" 
                     size="lg" 
                     className="w-full bg-blue-600 hover:bg-blue-700 py-6 rounded-xl text-lg"
+                    disabled={isSubmitting}
                   >
-                    Send Message
+                    {isSubmitting ? "Preparing Message..." : "Send Message"}
                   </Button>
                 </form>
               </CardContent>
