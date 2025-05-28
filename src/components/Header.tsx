@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -18,7 +17,7 @@ const Header = () => {
               alt="Benzyleo" 
               className="h-8 w-8"
             />
-            <span className="font-bold text-xl text-gray-900 dark:text-white">Benzyleo</span>
+            <span className="font-bold text-xl text-gray-900 dark:text-white">Benzyleo Holidays</span>
           </Link>
 
           {/* Desktop Navigation */}
