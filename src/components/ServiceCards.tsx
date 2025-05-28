@@ -28,6 +28,12 @@ const ServiceCards = () => {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 drop-shadow-sm tracking-tight">
+            Our Verticals
+          </h2>
+        </div>
+        
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <Link key={index} to={service.link} className="group">
