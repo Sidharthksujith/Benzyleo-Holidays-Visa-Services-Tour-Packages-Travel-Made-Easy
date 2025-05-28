@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -13,9 +14,9 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center space-x-2">
             <img 
-              src="/lovable-uploads/b259bbf1-00e9-482d-994f-08f7928db7f6.png" 
+              src="/lovable-uploads/d76a6127-d89f-4b05-999d-f968245ebd8f.png" 
               alt="Benzyleo" 
-              className="h-8 w-8"
+              className="h-8 w-8 object-contain"
             />
             <span className="font-bold text-xl text-gray-900 dark:text-white">Benzyleo Holidays</span>
           </Link>
