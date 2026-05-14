@@ -37,6 +37,9 @@ const Header = () => {
             <Button asChild className="bg-blue-600 hover:bg-blue-700">
               <Link to="/contact">Get Started</Link>
             </Button>
+            <Button asChild className="bg-green-600 hover:bg-green-700">
+              <a href="https://razorpay.me/@benzyeloholidays" target="_blank" rel="noopener noreferrer">Pay Now</a>
+            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -64,6 +67,9 @@ const Header = () => {
               <Link to="/contact" className="text-gray-600 hover:text-blue-600 transition-colors dark:text-gray-300 dark:hover:text-blue-400">Contact</Link>
               <Button asChild className="w-fit bg-blue-600 hover:bg-blue-700">
                 <Link to="/contact">Get Started</Link>
+              </Button>
+              <Button asChild className="w-fit bg-green-600 hover:bg-green-700">
+                <a href="https://razorpay.me/@benzyeloholidays" target="_blank" rel="noopener noreferrer">Pay Now</a>
               </Button>
             </nav>
           </div>
